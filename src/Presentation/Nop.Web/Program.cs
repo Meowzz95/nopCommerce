@@ -8,7 +8,12 @@ namespace Nop.Web
         public static void Main(string[] args)
         {
             var host = WebHost.CreateDefaultBuilder(args)
-                .UseKestrel(options => options.AddServerHeader = false)
+                .UseKestrel(options =>
+                {
+                    // 500M
+                    options.Limits.MaxRequestBodySize = 524288000;
+                    options.AddServerHeader = false;
+                })
                 .UseStartup<Startup>()
                 .Build();
 
