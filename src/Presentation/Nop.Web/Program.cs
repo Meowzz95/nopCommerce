@@ -10,8 +10,8 @@ namespace Nop.Web
             var host = WebHost.CreateDefaultBuilder(args)
                 .UseKestrel(options =>
                 {
-                    // 500M
-                    options.Limits.MaxRequestBodySize = 524288000;
+                    // 10GB
+                    options.Limits.MaxRequestBodySize = 10000000000;
                     options.AddServerHeader = false;
                 })
                 .UseStartup<Startup>()
