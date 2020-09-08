@@ -221,7 +221,7 @@ namespace Nop.Core
 
             //use HTTP_X_FORWARDED_PROTO?
             if (_hostingConfig.UseHttpXForwardedProto)
-                return _httpContextAccessor.HttpContext.Request.Headers[NopHttpDefaults.HttpXForwardedProtoHeader].ToString().Equals("https", StringComparison.OrdinalIgnoreCase);
+                return true; // here we force to use https when UseHttpXForwardedProto is set to true because we are unable to ask the gw to set this header
 
             return _httpContextAccessor.HttpContext.Request.IsHttps;
         }
